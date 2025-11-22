@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\ReviewController;
 
 Route::get('/', function () {
     return view('home.index');
@@ -31,3 +32,17 @@ Route::middleware('auth')->group(function() {
     Route::post('/profile/store', [AdminController::class, 'ProfileStore'])->name('profile.store');
     Route::post('/admin/password/update', [AdminController::class, 'PasswordUpdate'])->name('admin.password.update');
 }); 
+
+Route::middleware('auth')->group(function(){
+
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/all/review', 'AllReview')->name('all.review');
+        Route::get('/add/review', 'AddReview')->name('add.review');
+        Route::post('/store/review', 'StoreReview')->name('store.review');
+        Route::get('/edit/review/{id}', 'EditReview')->name('edit.review');
+        Route::post('/update/review', 'UpdateReview')->name('update.review');
+        Route::get('/delete/review/{id}', 'DeleteReview')->name('delete.review');
+    });
+    
+
+});
