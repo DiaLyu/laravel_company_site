@@ -66,8 +66,23 @@
                 <li>
                     <a href="{{ route('get.slider') }}" class="tp-link">Get Slider</a>
                 </li>
+            </ul>
+        </div>
+    </li>
+
+    <li>
+        <a href="#sidebarFeatures" data-bs-toggle="collapse">
+            <i data-feather="package"></i>
+            <span> Features Setup </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarFeatures">
+            <ul class="nav-second-level">
                 <li>
-                    <a href="{{ route('add.review') }}" class="tp-link">Add Review</a>
+                    <a href="{{ route('all.features') }}" class="tp-link">All Features</a>
+                </li>
+                <li>
+                    <a href="{{ route('add.features') }}" class="tp-link">Add Features</a>
                 </li>
             </ul>
         </div>
