@@ -1,15 +1,26 @@
+@php
+    $clarify = App\Models\Clarifi::find(1);
+@endphp
+
 <section class="lonyo-section-padding6">
     <div class="container">
         <div class="row">
         <div class="col-lg-5">
             <div class="lonyo-content-thumb" data-aos="fade-up" data-aos-duration="700">
-            <img src="{{ asset('frontend/assets/images/v1/content-thumb.png') }}" alt="">
+            <img src="{{ asset($clarify->image) }}" alt="{{ $clarify->title }}">
             </div>
         </div>
         <div class="col-lg-7 d-flex align-items-center">
             <div class="lonyo-default-content pl-50" data-aos="fade-up" data-aos-duration="700">
-            <h2>It clarifies all strategic financial decisions</h2>
-            <p class="data">With this tool, you can say goodbye to overspending, stay on track with your savings goals, and say goodbye to financial worries. Get ready for a clearer view of your finances like never before!</p>
+
+            <h2 id="clarify-title" contenteditable="{{ auth()->check() ? 'true' : 'false' }}" 
+                data-id="{{ $clarify->id }}">{{ $clarify->title }}</h2>
+
+            <p id="clarify-description" contenteditable="{{ auth()->check() ? 'true' : 'false' }}" 
+                data-id="{{ $clarify->id }}" class="data">
+                {{ $clarify->description }}
+            </p>
+
             <div class="lonyo-faq-wrap1 mt-50">
                 <div class="lonyo-faq-item open" data-aos="fade-up" data-aos-duration="500">
                 <div class="lonyo-faq-header">
@@ -53,3 +64,52 @@
         </div>
     </div>
 </section>
+
+{{-- CSRF Token --}}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const titleElement = document.getElementById("clarify-title");
+        const descElement = document.getElementById("clarify-description");
+
+        function saveChanges(element){
+            let clarifyId = element.dataset.id;
+            let field = element.id === "clarify-title" ? "title" : "description";
+            let newValue = element.innerText.trim();
+
+            fetch(`/edit-clarify/${clarifyId}`, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"), 
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ [field]:newValue })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    console.log(`${field} updated successfully`)
+                }
+            })
+            .catch(error => console.log("Error:", error));
+        }
+
+        // Auto save on Enter Key
+        document.addEventListener("keydown", function(e){
+            if(e.key === "Enter"){
+                e.preventDefault();
+                saveChanges(e.target);
+            }
+        });
+
+        // Auto save on Losing focus
+        titleElement.addEventListener("blur", function(){
+            saveChanges(titleElement);
+        });
+
+        descElement.addEventListener("blur", function(){
+            saveChanges(descElement);
+        });
+    })
+</script>

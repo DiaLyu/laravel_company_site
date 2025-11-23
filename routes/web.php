@@ -64,4 +64,10 @@ Route::middleware('auth')->group(function(){
         Route::get('/delete/features/{id}', 'DeleteFeatures')->name('delete.features');
     });
 
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/get/clarifies', 'GetClarifies')->name('get.clarifies');
+        Route::post('/update/clarifies', 'UpdateClarifies')->name('update.clarifies');
+        Route::post('/edit-clarify/{id}', 'EditClarify');
+    });
+
 });
