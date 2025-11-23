@@ -96,7 +96,6 @@
   <script src="{{ asset('frontend/assets/js/aos.js') }}"></script>
   <script src="{{ asset('frontend/assets/js/niceselect.js') }}"></script>
   <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyArZVfNvjnLNwJZlLJKuOiWHZ6vtQzzb1Y"></script>
   <script src="{{ asset('frontend/assets/js/slick.js') }}"></script>
 
   <script src="{{ asset('frontend/assets/js/app.js') }}"></script>

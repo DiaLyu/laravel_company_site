@@ -38,15 +38,33 @@
     <li class="menu-title">Pages</li>
 
     <li>
-        <a href="#sidebarAuth" data-bs-toggle="collapse">
+        <a href="#sidebarReviews" data-bs-toggle="collapse">
             <i data-feather="users"></i>
             <span> Review Setup </span>
             <span class="menu-arrow"></span>
         </a>
-        <div class="collapse" id="sidebarAuth">
+        <div class="collapse" id="sidebarReviews">
             <ul class="nav-second-level">
                 <li>
                     <a href="{{ route('all.review') }}" class="tp-link">All Review</a>
+                </li>
+                <li>
+                    <a href="{{ route('add.review') }}" class="tp-link">Add Review</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li>
+        <a href="#sidebarSlider" data-bs-toggle="collapse">
+            <i data-feather="package"></i>
+            <span> Slider Setup </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarSlider">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{ route('get.slider') }}" class="tp-link">Get Slider</a>
                 </li>
                 <li>
                     <a href="{{ route('add.review') }}" class="tp-link">Add Review</a>
