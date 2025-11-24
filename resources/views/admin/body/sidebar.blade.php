@@ -104,6 +104,57 @@
     </li>
 
     <li>
+        <a href="#sidebarUsability" data-bs-toggle="collapse">
+            <i data-feather="package"></i>
+            <span> Usability Setup </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarUsability">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{ route('get.usability') }}" class="tp-link">Get Usability</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li>
+        <a href="#sidebarConnect" data-bs-toggle="collapse">
+            <i data-feather="package"></i>
+            <span> Connect Setup </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarConnect">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{ route('all.connect') }}" class="tp-link">All Connect</a>
+                </li>
+                <li>
+                    <a href="{{ route('add.connect') }}" class="tp-link">Add Connect</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li>
+        <a href="#sidebarFaq" data-bs-toggle="collapse">
+            <i data-feather="package"></i>
+            <span> FAQ Setup </span>
+            <span class="menu-arrow"></span>
+        </a>
+        <div class="collapse" id="sidebarFaq">
+            <ul class="nav-second-level">
+                <li>
+                    <a href="{{ route('all.faq') }}" class="tp-link">All FAQ</a>
+                </li>
+                <li>
+                    <a href="{{ route('add.faq') }}" class="tp-link">Add FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li>
         <a href="#sidebarError" data-bs-toggle="collapse">
             <i data-feather="alert-octagon"></i>
             <span> Error Pages </span>

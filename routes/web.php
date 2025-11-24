@@ -70,4 +70,53 @@ Route::middleware('auth')->group(function(){
         Route::post('/edit-clarify/{id}', 'EditClarify');
     });
 
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/get/usability', 'GetUsability')->name('get.usability');
+        Route::post('/update/usability', 'UpdateUsabilty')->name('update.usability');
+    });
+
+     Route::controller(HomeController::class)->group(function(){
+        Route::get('/all/connect', 'AllConnect')->name('all.connect');
+        Route::get('/add/connect', 'AddConnect')->name('add.connect');
+        Route::post('/store/connect', 'StoreConnect')->name('store.connect');
+        Route::get('/edit/connect/{id}', 'EditConnect')->name('edit.connect');
+        Route::post('/update/connect', 'UpdateConnect')->name('update.connect');
+        Route::get('/delete/connect/{id}', 'DeleteConnect')->name('delete.connect');
+        Route::post('/edit-connect/{id}', 'EditConnectLayout');
+    });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/all/connect', 'AllConnect')->name('all.connect');
+        Route::get('/add/connect', 'AddConnect')->name('add.connect');
+        Route::post('/store/connect', 'StoreConnect')->name('store.connect');
+        Route::get('/edit/connect/{id}', 'EditConnect')->name('edit.connect');
+        Route::post('/update/connect', 'UpdateConnect')->name('update.connect');
+        Route::get('/delete/connect/{id}', 'DeleteConnect')->name('delete.connect');
+        Route::post('/edit-connect/{id}', 'EditConnectLayout');
+    });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/all/connect', 'AllConnect')->name('all.connect');
+        Route::get('/add/connect', 'AddConnect')->name('add.connect');
+        Route::post('/store/connect', 'StoreConnect')->name('store.connect');
+        Route::get('/edit/connect/{id}', 'EditConnect')->name('edit.connect');
+        Route::post('/update/connect', 'UpdateConnect')->name('update.connect');
+        Route::get('/delete/connect/{id}', 'DeleteConnect')->name('delete.connect');
+        Route::post('/edit-connect/{id}', 'EditConnectLayout');
+    });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::get('/all/faq', 'AllFAQ')->name('all.faq');
+        Route::get('/add/faq', 'AddFAQ')->name('add.faq');
+        Route::post('/store/faq', 'StoreFAQ')->name('store.faq');
+        Route::get('/edit/faq/{id}', 'EditFAQ')->name('edit.faq');
+        Route::post('/update/faq', 'UpdateFAQ')->name('update.faq');
+        Route::get('/delete/faq/{id}', 'DeleteFAQ')->name('delete.faq');
+        Route::post('/edit-faq/{id}', 'EditFAQLayout');
+    });
+
+    Route::controller(HomeController::class)->group(function(){
+        Route::post('/edit-app/{id}', 'EditApp');
+        Route::post('/update-app-image/{id}', 'UpdateAppsImage');
+    });
 });
