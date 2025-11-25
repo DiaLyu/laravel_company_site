@@ -130,7 +130,13 @@ Route::middleware('auth')->group(function(){
         Route::post('/update/team', 'UpdateTeam')->name('update.team');
         Route::get('/delete/team/{id}', 'DeleteTeam')->name('delete.team');
     });
+
+    Route::controller(FrontendController::class)->group(function(){
+        Route::get('/get/about', 'GetAbout')->name('get.about');
+        Route::post('/update/about', 'UpdateAbout')->name('update.about');
+    });
 });
 // Out of any middleware
 
 Route::get('/team', [FrontendController::class, 'OurTeam'])->name('our.team');
+Route::get('/about', [FrontendController::class, 'AboutUs'])->name('about.us');

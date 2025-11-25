@@ -16,7 +16,7 @@
                         <a href="contact-us.html">Home</a>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#">About As</a>
+                        <a href="{{ route('about.us') }}">About As</a>
                         <ul class="sub-menu">
                             <li>
                                 <a href="index.html">
