@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Backend\TeamController;
+use App\Http\Controllers\Backend\BlogController;
 
 Route::get('/', function () {
     return view('home.index');
@@ -134,6 +135,14 @@ Route::middleware('auth')->group(function(){
     Route::controller(FrontendController::class)->group(function(){
         Route::get('/get/about', 'GetAbout')->name('get.about');
         Route::post('/update/about', 'UpdateAbout')->name('update.about');
+    });
+
+    Route::controller(BlogController::class)->group(function(){
+        Route::get('/blog/category', 'BlogCategory')->name('all.blog.category');
+        Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+        Route::get('/edit/blog/category/{id}', 'EditBlogCategory');
+        Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+        Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
     });
 });
 // Out of any middleware
