@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\About;
+use App\Models\BlogCategory;
+use App\Models\BlogPost;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -23,6 +25,7 @@ class FrontendController extends Controller
         $about = About::find(1);
         return view('admin.backend.about.get_about', compact('about'));
     }
+    // End Method
 
     public function UpdateAbout(Request $request){
         $about_id = $request->id;
@@ -66,5 +69,30 @@ class FrontendController extends Controller
 
             return redirect()->back()->with($notification);
         }
+    }
+    // End Method
+
+    public function BlogPage(){
+        $blogcat = BlogCategory::latest()->withCount('posts')->get();
+        $post = BlogPost::latest()->limit(5)->get();
+        $recentpost = BlogPost::latest()->limit(3)->get();
+        return view('home.blog.list_blog', compact('blogcat', 'post', 'recentpost'));
+    }
+    // End Method
+
+    public function BlogDetails($slug){
+        $blog = BlogPost::where('post_slug', $slug)->first();
+        $blogcat = BlogCategory::latest()->withCount('posts')->get();
+        $recentpost = BlogPost::latest()->limit(3)->get();
+        return view('home.blog.blog_details', compact('blog', 'blogcat', 'recentpost'));
+    }
+    // End Method
+
+    public function BlogCategory($id){
+        $blog = BlogPost::where('blogcat_id', $id)->get();
+        $categoryname = BlogCategory::where('id', $id)->first();
+        $blogcat = BlogCategory::latest()->withCount('posts')->get();
+        $recentpost = BlogPost::latest()->limit(3)->get();
+        return view('home.blog.blog_category', compact('blog', 'categoryname', 'blogcat', 'recentpost'));
     }
 }
