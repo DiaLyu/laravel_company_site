@@ -241,6 +241,13 @@
     </li>
 
     <li>
+        <a href="{{ route('contact.all.message') }}">
+            <i data-feather="file-text"></i>
+            <span> Contact Message </span>
+        </a>
+    </li>
+
+    <li>
         <a href="widgets.html" class="tp-link">
             <i data-feather="aperture"></i>
             <span> Widgets </span>
